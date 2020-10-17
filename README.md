@@ -22,7 +22,7 @@ Some images, especially ones scraped from Internet, has corrupt EXIF information
 
     - All images in a list
 
-        Slow but reduces the file size more.
+        Slow but reduces the file size more in total.
 
     ```python
     from erase_exif import erase_all_exif
@@ -47,7 +47,7 @@ Some images, especially ones scraped from Internet, has corrupt EXIF information
 
     - Erase only corrupt EXIF.
 
-        Fast, but does not reduce file size.
+        Fast, but does not reduce file size in total.
 
     ```python
     from erase_exif import erase_corrupt_exif
