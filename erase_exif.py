@@ -24,7 +24,7 @@ def erase_exif(image_path, dst_path):
         size = image.size
     with Image.new(mode, size) as dst:
         dst.putdata(data)
-        dst.save(image_path)
+        dst.save(dst_path)
 
 def erase_corrupt_exif(image_paths, keep_image=False):
     '''
