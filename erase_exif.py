@@ -26,7 +26,7 @@ def erase_exif(image_path, dst_path):
         dst.putdata(data)
         dst.save(dst_path)
 
-def erase_corrupt_exif(image_paths, keep_image=False):
+def erase_corrupt_exif(image_paths, keep_image=False, verbose=False):
     '''
     only erase exif of images with corrupt exif.
     fast but file size would not change.
@@ -66,7 +66,8 @@ def erase_corrupt_exif(image_paths, keep_image=False):
             else:
                 # overwrite file
                 dst_path = image_path
-            print(f'\'{image_path}\' will be saved to \'{dst_path}\' with no exif.')
+            if verbose:
+                print(f'\'{image_path}\' will be saved to \'{dst_path}\' with no exif.')
             with warnings.catch_warnings():
                 warnings.filterwarnings('ignore')
                 erase_exif(image_path, dst_path)
@@ -76,7 +77,7 @@ def erase_corrupt_exif(image_paths, keep_image=False):
         print(past_files)
     return past_files
 
-def erase_all_exif(image_paths, keep_image=False):
+def erase_all_exif(image_paths, keep_image=False, verbose=False):
     '''
     erase exif of all images in image_paths
     slow but decreases image file size better.
@@ -100,5 +101,6 @@ def erase_all_exif(image_paths, keep_image=False):
         else:
             # overwrite file
             dst_path = image_path
-        print(f'\'{image_path}\' will be saved to \'{dst_path}\' with no exif.')
+        if verbose:
+            print(f'\'{image_path}\' will be saved to \'{dst_path}\' with no exif.')
         erase_exif(image_path, dst_path)
